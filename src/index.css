@@ -273,3 +273,24 @@ body {
   background-color: rgba(0, 0, 0, 0.6);
   z-index: -1; /* Asegura que el overlay esté detrás del modal */
 }
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 600px) {
+  .song-info-right {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  .btn,
+  .play-btn,
+  .delete-btn {
+    width: 100%;
+  }
+
+  .modal-content iframe {
+    height: 200px;
+  }
+}
