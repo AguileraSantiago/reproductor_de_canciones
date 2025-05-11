@@ -59,7 +59,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="header">
-        <h1 className="title">Reproductor de canciones</h1>
+        <h1 className="title">Reproductor de canciones 🎵</h1>
       </header>
       <SongForm addSong={addSong} />
       <input
@@ -70,7 +70,7 @@ const App = () => {
         className="search-bar"
       />
       <button onClick={toggleSort} className="btn sort-btn">
-        {isSorted ? "Quitar orden" : "Más reproducidas"}
+        {isSorted ? "Quitar orden" : "Ordenar por más reproducidas"}
       </button>
       <SongList
         songs={displaySongs.filter((song) =>
