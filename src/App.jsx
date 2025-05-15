@@ -59,11 +59,6 @@ const App = () => {
   return (
     <div className="App">
       <header className="header">
-        <img
-          className="logoForm"
-          src="/public/lista-de-reproduccion.png"
-          alt="logo"
-        />
         <h1 className="title">Playlist</h1>
       </header>
       <SongForm addSong={addSong} songList={songs} />
