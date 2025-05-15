@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SongForm = ({ addSong }) => {
+const SongForm = ({ addSong, songList }) => {
   const [songName, setSongName] = useState("");
   const [songUrl, setSongUrl] = useState("");
   const [error, setError] = useState("");
@@ -11,11 +11,16 @@ const SongForm = ({ addSong }) => {
     return youtubeRegex.test(url);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario (que recargaría la página)
-    setError(""); // Limpiar el error previo al hacer una nueva validación
+  const extractVideoId = (url) => {
+    const regExp =
+      /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]{11}).*/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  };
 
-    // Validaciones
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
 
     if (!songName || !songUrl) {
       setError("Ambos campos son obligatorios");
@@ -27,18 +32,32 @@ const SongForm = ({ addSong }) => {
       return;
     }
 
-    // Crear nueva canción
+    const videoId = extractVideoId(songUrl);
+
+    if (!videoId) {
+      setError("No se pudo extraer el ID del video");
+      return;
+    }
+
+    const alreadyExists = songList.some(
+      (song) => extractVideoId(song.url) === videoId
+    );
+
+    if (alreadyExists) {
+      setError("⚠️ Esta canción ya fue agregada.");
+      return;
+    }
 
     const newSong = {
-      id: Date.now(), // Usamos el timestamp actual como ID único
-      name: songName, // El nombre de la canción que el usuario escribió
-      url: songUrl, // La URL de YouTube proporcionada
-      playCount: 0, // Inicialmente la canción no ha sido reproducida
+      id: Date.now(),
+      name: songName,
+      url: songUrl,
+      playCount: 0,
     };
 
-    addSong(newSong); // Llamar a la función para agregar la canción al estado
-    setSongName(""); // Limpia el campo de nombre de la canción
-    setSongUrl(""); // Limpia el campo de la URL de la canción
+    addSong(newSong);
+    setSongName("");
+    setSongUrl("");
   };
 
   return (

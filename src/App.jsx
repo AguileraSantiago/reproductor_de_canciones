@@ -59,9 +59,14 @@ const App = () => {
   return (
     <div className="App">
       <header className="header">
-        <h1 className="title">Reproductor de canciones 🎵</h1>
+        <img
+          className="logoForm"
+          src="/public/lista-de-reproduccion.png"
+          alt="logo"
+        />
+        <h1 className="title">Playlist</h1>
       </header>
-      <SongForm addSong={addSong} />
+      <SongForm addSong={addSong} songList={songs} />
       <input
         type="text"
         placeholder="Buscar canción..."
