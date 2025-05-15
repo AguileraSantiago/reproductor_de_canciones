@@ -16,12 +16,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/public/cover-spotify.webp);
+  background-image: url(/cover-spotify.webp);
   background-size: cover;
   background-position: center;
   filter: blur(2px) brightness(0.3);
   z-index: -1;
-  -webkit-filter: blur(2px) brightness(0.3);
 }
 
 /* Contenedor principal de la aplicación */
@@ -331,10 +330,25 @@ body::before {
   }
 }
 
+@media (max-width: 1024px) {
+  body {
+    padding: 80px 30px;
+  }
+
+  .App {
+    padding: 15px;
+  }
+}
+
 /* Más responsividad para móviles */
 @media (max-width: 768px) {
   body {
-    padding: 60px 20px;
+    padding: 60px 10px;
+  }
+
+  .App {
+    width: 90%;
+    padding: 12px;
   }
 
   .title {
@@ -343,14 +357,13 @@ body::before {
 
   .search-bar,
   .input,
-  .btn,
   .play-btn,
   .delete-btn {
-    width: 100%;
+    width: 95%;
   }
 
   .song-item {
-    padding: 12px;
+    padding: 20px;
   }
 
   .modal-content {
@@ -372,6 +385,13 @@ body::before {
     font-size: 1.4em;
   }
 
+  .search-bar,
+  .input,
+  .play-btn,
+  .delete-btn {
+    width: 92%;
+  }
+
   .song-form {
     padding: 12px;
     gap: 8px;
@@ -379,7 +399,7 @@ body::before {
 
   .song-info-right {
     flex-direction: column;
-    gap: 8px;
+    gap: 20px;
     width: 100%;
   }
 
