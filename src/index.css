@@ -16,7 +16,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/public//cover-spotify.webp);
+  background-image: url(/public/cover-spotify.webp);
   background-size: cover;
   background-position: center;
   filter: blur(2px) brightness(0.3);
@@ -305,23 +305,81 @@ body::before {
   z-index: -1; /* Asegura que el overlay esté detrás del modal */
 }
 
-/* Media queries para pantallas pequeñas */
-@media (max-width: 600px) {
-  .song-info-right {
-    flex-direction: column;
+/* Más responsividad para tablets */
+@media (max-width: 900px) {
+  body {
+    padding: 60px 30px;
+  }
+
+  .App {
+    padding: 15px;
   }
 
   .title {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 
+  .song-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .song-info-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Más responsividad para móviles */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8em;
+  }
+
+  .search-bar,
+  .input,
   .btn,
   .play-btn,
   .delete-btn {
     width: 100%;
   }
 
-  .modal-content iframe {
-    height: 200px;
+  .song-item {
+    padding: 12px;
+  }
+
+  .modal-content {
+    padding: 15px;
+  }
+
+  .modal iframe {
+    height: 250px;
+  }
+}
+
+/* Super responsivo para móviles chicos (como 320px - 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 40px 15px;
+  }
+
+  .title {
+    font-size: 1.4em;
+  }
+
+  .song-form {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .song-info-right {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .modal iframe {
+    height: 180px;
   }
 }
