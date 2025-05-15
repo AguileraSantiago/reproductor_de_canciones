@@ -3,7 +3,7 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   position: relative;
   margin: 0;
-  padding: 100px;
+  padding: 100px 40px;
   color: #f1f1f1;
   overflow-x: hidden;
   z-index: 0;
@@ -333,6 +333,10 @@ body::before {
 
 /* Más responsividad para móviles */
 @media (max-width: 768px) {
+  body {
+    padding: 60px 20px;
+  }
+
   .title {
     font-size: 1.8em;
   }
